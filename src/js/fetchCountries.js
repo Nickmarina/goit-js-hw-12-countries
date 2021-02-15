@@ -4,7 +4,7 @@ import serchResult from './searchResult';
 function fetchCountries(searchQuery) {
   const url = `https://restcountries.eu/rest/v2/name/${searchQuery}`;
   return fetch(url)
-    .then(errorMessage404)
+    .then(res => errorMessage404(res))
     .then(countries => serchResult(countries))
     .catch(error => console.log(error));
 }
