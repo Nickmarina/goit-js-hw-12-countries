@@ -1,12 +1,8 @@
-import errorMessage404 from './404message';
-import serchResult from './searchResult';
-
 function fetchCountries(searchQuery) {
   const url = `https://restcountries.eu/rest/v2/name/${searchQuery}`;
   return fetch(url)
-    .then(res => errorMessage404(res))
-    .then(countries => serchResult(countries))
+    .then(res => res.json())
+    .then(countries => countries)
     .catch(error => console.log(error));
 }
-
 export default fetchCountries;
